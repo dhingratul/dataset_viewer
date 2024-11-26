@@ -1,0 +1,192 @@
+[
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "load_dataset",
+        "importPath": "datasets",
+        "description": "datasets",
+        "isExtraImport": true,
+        "detail": "datasets",
+        "documentation": {}
+    },
+    {
+        "label": "TextVisualizer",
+        "importPath": "visualizer",
+        "description": "visualizer",
+        "isExtraImport": true,
+        "detail": "visualizer",
+        "documentation": {}
+    },
+    {
+        "label": "ImageVisualizer",
+        "importPath": "visualizer",
+        "description": "visualizer",
+        "isExtraImport": true,
+        "detail": "visualizer",
+        "documentation": {}
+    },
+    {
+        "label": "VideoVisualizer",
+        "importPath": "visualizer",
+        "description": "visualizer",
+        "isExtraImport": true,
+        "detail": "visualizer",
+        "documentation": {}
+    },
+    {
+        "label": "traceback",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "traceback",
+        "description": "traceback",
+        "detail": "traceback",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "datasets.features",
+        "description": "datasets.features",
+        "isExtraImport": true,
+        "detail": "datasets.features",
+        "documentation": {}
+    },
+    {
+        "label": "Video",
+        "importPath": "datasets.features",
+        "description": "datasets.features",
+        "isExtraImport": true,
+        "detail": "datasets.features",
+        "documentation": {}
+    },
+    {
+        "label": "is_valid_dataset",
+        "kind": 2,
+        "importPath": "dataset_visualizer",
+        "description": "dataset_visualizer",
+        "peekOfCode": "def is_valid_dataset(dataset_name):\n    \"\"\"Check if dataset exists in Hugging Face hub\"\"\"\n    try:\n        # Try loading just the dataset info first\n        dataset_info = load_dataset(dataset_name, download_mode='force_redownload')\n        return True\n    except Exception as e:\n        st.error(f\"Error loading dataset '{dataset_name}': {str(e)}\")\n        return False\ndef format_conversation(conversations):",
+        "detail": "dataset_visualizer",
+        "documentation": {}
+    },
+    {
+        "label": "format_conversation",
+        "kind": 2,
+        "importPath": "dataset_visualizer",
+        "description": "dataset_visualizer",
+        "peekOfCode": "def format_conversation(conversations):\n    \"\"\"Format conversation data for display\"\"\"\n    try:\n        if isinstance(conversations, str):\n            conversations = json.loads(conversations)\n        if isinstance(conversations, list):\n            for conv in conversations:\n                if isinstance(conv, dict) and 'from' in conv and 'value' in conv:\n                    st.markdown(f\"**{conv['from']}**: {conv['value']}\")\n                else:",
+        "detail": "dataset_visualizer",
+        "documentation": {}
+    },
+    {
+        "label": "format_llava_sample",
+        "kind": 2,
+        "importPath": "dataset_visualizer",
+        "description": "dataset_visualizer",
+        "peekOfCode": "def format_llava_sample(sample):\n    \"\"\"Special handling for LLaVA dataset format\"\"\"\n    try:\n        # Handle conversations\n        if 'conversations' in sample:\n            st.markdown(\"**Conversation:**\")\n            for conv in sample['conversations']:\n                role = conv.get('from', 'unknown')\n                content = conv.get('value', '')\n                st.markdown(f\"**{role}**: {content}\")",
+        "detail": "dataset_visualizer",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "dataset_visualizer",
+        "description": "dataset_visualizer",
+        "peekOfCode": "def main():\n    st.title(\"Hugging Face Dataset Visualizer\")\n    # Dataset input with examples\n    st.markdown(\"\"\"\n    Try these example datasets:\n    - `mnist`: Handwritten digits\n    - `fashion_mnist`: Fashion items\n    - `cifar10`: Natural images\n    - `beans`: Plant disease images\n    \"\"\")",
+        "detail": "dataset_visualizer",
+        "documentation": {}
+    },
+    {
+        "label": "TextVisualizer",
+        "kind": 6,
+        "importPath": "visualizer",
+        "description": "visualizer",
+        "peekOfCode": "class TextVisualizer:\n    def can_visualize(self, data):\n        return isinstance(data, (str, int, float, list, dict))\n    def visualize(self, data):\n        if isinstance(data, (list, dict)):\n            # Handle conversation format\n            try:\n                if isinstance(data, str):\n                    # Try to parse string as JSON\n                    data = json.loads(data)",
+        "detail": "visualizer",
+        "documentation": {}
+    },
+    {
+        "label": "ImageVisualizer",
+        "kind": 6,
+        "importPath": "visualizer",
+        "description": "visualizer",
+        "peekOfCode": "class ImageVisualizer:\n    def can_visualize(self, data, feature):\n        return (\n            isinstance(feature, ImageFeature) or \n            isinstance(data, np.ndarray) and len(data.shape) in [2, 3] or\n            isinstance(data, Image.Image) or\n            (isinstance(data, str) and data.endswith(('.jpg', '.png', '.jpeg')))\n        )\n    def visualize(self, data):\n        try:",
+        "detail": "visualizer",
+        "documentation": {}
+    },
+    {
+        "label": "VideoVisualizer",
+        "kind": 6,
+        "importPath": "visualizer",
+        "description": "visualizer",
+        "peekOfCode": "class VideoVisualizer:\n    def can_visualize(self, data, feature):\n        return isinstance(feature, VideoFeature)\n    def visualize(self, data):\n        if isinstance(data, dict) and 'bytes' in data:\n            with st.spinner(\"Loading video...\"):\n                st.video(data['bytes'])\n        else:\n            st.write(\"Unsupported video format\")",
+        "detail": "visualizer",
+        "documentation": {}
+    }
+]
